@@ -37,6 +37,7 @@ export default {
       line-height: 83px;
       @include font_color();
       @include font_size($font_medium);
+      font-weight: 600;
     }
     &.router-link-active{
       @include border_color();

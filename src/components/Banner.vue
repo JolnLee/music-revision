@@ -23,7 +23,7 @@ export default {
       swiperOption: {
         loop: true,
         autoplay: {
-          delay: 3000,
+          delay: 5000,
           stopOnLastSlide: false,
           disableOnInteraction: false
         },
@@ -65,7 +65,7 @@ export default {
 .banner{
   .swiper-pagination-bullet{
     width: 24px;
-    height: 6px;
+    height: 4px;
     border-radius: 12px;
     background: #fff;
     opacity: 1;
