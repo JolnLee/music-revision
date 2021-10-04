@@ -32,7 +32,6 @@ export default {
 .header{
   width: 100%;
   height: 100px;
-  //background-color: #f00;
   @include bg_color;
   display: flex;
   justify-content: space-between;
