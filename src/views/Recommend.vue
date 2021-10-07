@@ -1,27 +1,37 @@
 <template>
   <div class="recommend">
-    <Banner :banners="banners"></Banner>
-    <Personalized :personalized="personalized" :title="'推荐歌单'"></Personalized>
-    <Personalized :personalized="album" :title="'最新专辑'"></Personalized>
+    <ScrollView>
+      <div>
+        <Banner :banners="banners"></Banner>
+        <Personalized :personalized="personalized" :title="'推荐歌单'"></Personalized>
+        <Personalized :personalized="album" :title="'最新专辑'"></Personalized>
+        <SongList :newSong="newSong"></SongList>
+      </div>
+    </ScrollView>
   </div>
 </template>
 
 <script>
-import { getBanner, getPersonalized, getAlbum } from '@/api'
+import { getBanner, getPersonalized, getAlbum, getNewSong } from '@/api'
 import Banner from '@/components/Banner'
 import Personalized from '@/components/Personalized'
+import SongList from '@/components/SongList'
+import ScrollView from '@/components/ScrollView'
 
 export default {
   name: 'Recommend',
   components: {
     Personalized,
-    Banner
+    Banner,
+    SongList,
+    ScrollView
   },
   data: function () {
     return {
       banners: [],
       personalized: [],
-      album: []
+      album: [],
+      newSong: []
     }
   },
   created () {
@@ -47,10 +57,23 @@ export default {
       .catch(function (err) {
         console.log(err)
       })
+    getNewSong()
+      .then((data) => {
+        this.newSong = data.result
+      })
+      .catch(function (err) {
+        console.log(err)
+      })
   }
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.recommend{
+  position: fixed;
+  top: 184px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 </style>
