@@ -11,7 +11,8 @@ export default {
   mounted () {
     this.iscroll = new IScroll(this.$refs.wrapper, {
       mouseWheel: true,
-      scrollbars: true,
+      scrollbars: false,
+      probeType: 3,
       scrollX: false,
       scrollY: true,
       disablePointer: true,
@@ -27,6 +28,13 @@ export default {
       attributesFilter: ['height', 'offsetHeight']
     }
     observer.observe(this.$refs.wrapper, config)
+  },
+  methods: {
+    scrolling (fn) {
+      this.iscroll.on('scroll', function () {
+        fn(this.y)
+      })
+    }
   }
 }
 </script>

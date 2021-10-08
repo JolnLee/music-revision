@@ -40,7 +40,6 @@ export default {
     padding: 0 27px;
     box-sizing: border-box;
     border-bottom: 2px solid #ccc;
-    //border-top: 2px solid #ccc;
     h3 {
       @include font_size($font_large);
       font-weight: bold;
@@ -49,7 +48,7 @@ export default {
   }
   .song-list{
     width: 100%;
-    @include bg_sub_color;
+    @include bg_sub_color();
     padding: 10px 27px;
     box-sizing: border-box;
     .list-item{
@@ -57,7 +56,8 @@ export default {
       display: flex;
       padding: 12px 0;
       align-items: center;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 2px solid transparent;
+      @include border_color_sub();
       img{
         width: 150px;
         height: 150px;
@@ -75,6 +75,9 @@ export default {
           @include font_color();
           opacity: .7;
         }
+      }
+      &:last-of-type{
+        border: none;
       }
     }
   }

@@ -3,11 +3,14 @@
     <ScrollView>
       <div>
         <Banner :banners="banners"></Banner>
-        <Personalized :personalized="personalized" :title="'推荐歌单'"></Personalized>
-        <Personalized :personalized="album" :title="'最新专辑'"></Personalized>
+        <Personalized :personalized="personalized" :title="'推荐歌单'" @selectItem="fatherSelectList" :type="'personalized'"></Personalized>
+        <Personalized :personalized="album" :title="'最新专辑'"  @selectItem="fatherSelectList" :type="'album'"></Personalized>
         <SongList :newSong="newSong"></SongList>
       </div>
     </ScrollView>
+    <transition>
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -31,7 +34,15 @@ export default {
       banners: [],
       personalized: [],
       album: [],
-      newSong: []
+      newSong: [],
+      cookies: ''
+    }
+  },
+  methods: {
+    fatherSelectList (id, type) {
+      this.$router.push({
+        path: `/recommend/detail/${id}/${type}`
+      })
     }
   },
   created () {
@@ -75,5 +86,27 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
+  overflow: hidden;
 }
+.v-enter{
+  opacity: 0;
+  transform: scale3d(0.3, 0.3, 0.3);
+}
+.v-enter-to{
+  opacity: 1;
+}
+.v-enter-active{
+  transition: all .5s ease-in-out;
+}
+.v-leave{
+  opacity: 1;
+}
+.v-leave-to{
+  opacity: 0;
+  transform: scale3d(0.3, 0.3, 0.3);
+}
+.v-leave-active{
+  transition: all .5s ease-in-out;
+}
+
 </style>
