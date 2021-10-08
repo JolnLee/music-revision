@@ -1,6 +1,6 @@
 import axios from 'axios'
-// axios.defaults.baseURL = 'http://music.it666.com:3666/'
-axios.defaults.baseURL = 'http://127.0.0.1:3000/'
+axios.defaults.baseURL = 'http://81.68.246.239:3000/'
+// axios.defaults.baseURL = 'http://127.0.0.1:3000/'
 axios.defaults.timeout = 5000
 export default {
   get: function (path = '', data = {}) {
