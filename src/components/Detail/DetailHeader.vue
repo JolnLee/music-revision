@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/css/mixin";
+@import "../../assets/css/mixin";
 .header{
   width: 100%;
   height: 100px;
@@ -53,11 +53,11 @@ export default {
     margin-top: 20px;
   }
   .header-left{
-    @include bg_img('../assets/images/back');
+    @include bg_img('../../assets/images/back');
     margin-left: 18px;
   }
   .header-right{
-    @include bg_img('../assets/images/more');
+    @include bg_img('../../assets/images/more');
     margin-right: 18px;
   }
   .header-title{

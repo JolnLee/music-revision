@@ -1,7 +1,9 @@
 <template>
   <div class="detail">
     <DetailHeader :title="other.name"></DetailHeader>
-    <DetailBg :imgSrc="other.coverImgUrl" ref="bgImg"></DetailBg>
+    <transition>
+      <DetailBg :imgSrc="other.coverImgUrl" ref="bgImg"></DetailBg>
+    </transition>
     <div class="bottom">
       <ScrollView ref="scrollview">
         <DetailItem :playlist="playList"></DetailItem>
@@ -11,9 +13,9 @@
 </template>
 
 <script>
-import DetailHeader from '@/components/DetailHeader'
-import DetailBg from '@/components/DetailBg'
-import DetailItem from '@/components/DetailItem'
+import DetailHeader from '@/components/Detail/DetailHeader'
+import DetailBg from '@/components/Detail/DetailBg'
+import DetailItem from '@/components/Detail/DetailItem'
 import ScrollView from '@/components/ScrollView'
 import { getPLayList, getSongDetail, getAlbumDetail } from '@/api'
 
@@ -71,12 +73,12 @@ export default {
   mounted () {
     const defaultHeight = this.$refs.bgImg.$el.offsetHeight
     this.$refs.scrollview.scrolling((offsetY) => {
-      if (offsetY < 0) {
-        const filter = 15 * Math.abs(offsetY) / defaultHeight
-        this.$refs.bgImg.$el.style.filter = `blur(${filter}px)`
-      } else {
+      if (offsetY > 0) {
         const scale = 1 + offsetY / defaultHeight
+        this.$refs.bgImg.$el.style.filter = 'blur(0)'
         this.$refs.bgImg.$el.style.transform = `scale(${scale})`
+      } else if (offsetY < 0) {
+        this.$refs.bgImg.$el.style.filter = 'blur(5px)'
       }
     })
   }
@@ -85,6 +87,21 @@ export default {
 
 <style scoped lang="scss">
 @import "../assets/css/mixin";
+.detail{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  @include bg_sub_color();
+  .bottom{
+    width: 100%;
+    position: fixed;
+    top: 500px;
+    left: 0;
+    bottom: 0;
+  }
+}
 .detail{
   width: 100%;
   height: 100%;

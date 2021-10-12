@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/css/mixin";
+@import "../../assets/css/mixin";
 .song {
   box-sizing: border-box;
   .song-top {

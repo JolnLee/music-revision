@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/css/mixin";
+@import "../../assets/css/mixin";
 .detail-item{
   width: 100%;
   min-height: 200px;
@@ -56,7 +56,7 @@ export default {
       width: 54px;
       height: 54px;
       margin-top: 23px;
-      @include bg_img('../assets/images/small_play');
+      @include bg_img('../../assets/images/small_play');
       background-repeat: no-repeat;
       background-size: cover;
       margin-right: 18px;

@@ -112,4 +112,13 @@
     background-image: url($url + '_it666@3x.png');
   }
 }
+@mixin player_background_color(){
+  background-color: $play-background-color-theme;
+  [data-theme=theme1] & {
+    background-color: $play-background-color-theme1;
+  }
+  [data-theme=theme2] & {
+    background-color: $play-background-color-theme2;
+  }
+}
 

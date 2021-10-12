@@ -17,7 +17,8 @@ export default {
       scrollY: true,
       disablePointer: true,
       disableTouch: false,
-      disableMouse: true
+      disableMouse: true,
+      click: true
     })
     const observer = new MutationObserver(() => {
       this.iscroll.refresh()

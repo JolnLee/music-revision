@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/css/mixin";
+@import "../../assets/css/mixin";
 .personalize{
   box-sizing: border-box;
   vertical-align:bottom;

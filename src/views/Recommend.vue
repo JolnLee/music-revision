@@ -1,13 +1,15 @@
 <template>
   <div class="recommend">
-    <ScrollView>
-      <div>
-        <Banner :banners="banners"></Banner>
-        <Personalized :personalized="personalized" :title="'推荐歌单'" @selectItem="fatherSelectList" :type="'personalized'"></Personalized>
-        <Personalized :personalized="album" :title="'最新专辑'"  @selectItem="fatherSelectList" :type="'album'"></Personalized>
-        <SongList :newSong="newSong"></SongList>
-      </div>
-    </ScrollView>
+    <div class="recommend-wrapper">
+      <ScrollView>
+        <div>
+          <Banner :banners="banners"></Banner>
+          <Personalized :personalized="personalized" :title="'推荐歌单'" @selectItem="fatherSelectList" :type="'personalized'"></Personalized>
+          <Personalized :personalized="album" :title="'最新专辑'"  @selectItem="fatherSelectList" :type="'album'"></Personalized>
+          <SongList :newSong="newSong"></SongList>
+        </div>
+      </ScrollView>
+    </div>
     <transition>
       <router-view></router-view>
     </transition>
@@ -16,9 +18,9 @@
 
 <script>
 import { getBanner, getPersonalized, getAlbum, getNewSong } from '@/api'
-import Banner from '@/components/Banner'
-import Personalized from '@/components/Personalized'
-import SongList from '@/components/SongList'
+import Banner from '@/components/Recommend/Banner'
+import Personalized from '@/components/Recommend/Personalized'
+import SongList from '@/components/Recommend/SongList'
 import ScrollView from '@/components/ScrollView'
 
 export default {
@@ -86,7 +88,11 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  overflow: hidden;
+  .recommend-wrapper{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
 }
 .v-enter{
   opacity: 0;
